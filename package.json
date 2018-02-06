@@ -1,0 +1,22 @@
+{
+  "name": "transom-server-functions-example",
+  "version": "0.1.0",
+  "repository": {
+    "git": "https://github.com/binaryops-wiebo/transom-functions-simple-example"
+  },
+  "description": "Simple example of transom-server-functions.",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "debug": "cross-env DEBUG=transom* node --inspect-brk index.js"
+  },
+  "author": "Wiebo Troost",
+  "license": "MIT",
+  "dependencies": {
+    "@transomjs/transom-core": "^1.0.4",
+    "@transomjs/transom-server-functions": "^1.0.4"
+  },
+  "devDependencies": {
+    "cross-env": "^5.1.3"
+  }
+}

@@ -10,7 +10,7 @@ const myApi = require('./myApi');
 console.log("Running " + myApi.name);
 
 
-// Register my TransomJS SMTP module.
+// Register my TransomJS server functions plugin.
 transom.configure(transomServerFunctions, {
 });
 

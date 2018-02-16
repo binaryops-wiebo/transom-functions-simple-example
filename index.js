@@ -5,9 +5,7 @@ const transomServerFunctions = require('@transomjs/transom-server-functions');
 
 const transom = new Transom();
 
-// ****************************************************************************
-// This sample app doesn't use any metadata from the API definition.
-// ****************************************************************************
+
 const myApi = require('./myApi');
 console.log("Running " + myApi.name);
 

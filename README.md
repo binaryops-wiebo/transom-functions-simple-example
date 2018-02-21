@@ -1,5 +1,5 @@
-## Server Functions Example
-#### Simple TransomJS Server functions
+## Server Functions - Simple
+#### Simple TransomJS Server functions example
 
 The simplest way to use transom server functions. Just add the plugin to the core and load your function definitions.
 Easily respond to API requests with your own custom functions.

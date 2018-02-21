@@ -3,25 +3,25 @@ module.exports = {
 	name: "My functions Example App",
 	transom: {},
 	definition: {
-        functions: {
-			hello:{
-				"methods": ["GET"],
-				"function": function(server, req, res, next) {
+		functions: {
+			hello: {
+				methods: ["GET"],
+				function: function (server, req, res, next) {
 					//do stuff
-					res.send("hello world");
+					res.send("Hello world!");
 					next();
-					}
+				}
 			},
 			timesten: {
 				methods: ["GET"],
-				"function": function(server, req, res, next) {
-					if (req.params["val"]){
+				function: function (server, req, res, next) {
+					if (req.params["val"]) {
 						const v = Number.parseFloat(req.params["val"]);
-						res.send(v + " times ten is " + (v*10) );
-						next();
-					}	
-				} 
+						res.send(v + " times ten is " + (v * 10));
+					}
+					next();
+				}
 			}
-		}	
-    }
+		}
+	}
 };

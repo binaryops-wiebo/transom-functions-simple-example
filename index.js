@@ -11,19 +11,30 @@ console.log("Running " + myApi.name);
 
 
 // Register my TransomJS server functions plugin.
-transom.configure(transomServerFunctions, {
-});
+transom.configure(transomServerFunctions);
 
 
 // Initialize my TransomJS API metadata.
-transom.initialize(myApi).then(function(server){
+transom.initialize(myApi).then(function (server) {
 
+	server.get('/', function (req, res, next) {
+		const links = [
+			'/api/v1/fx/timesten?val=123',
+			'/api/v1/fx/timesten?val=45',
+			'/api/v1/fx/hello'
+		];
 
+		let html = '<html><h1>Try these GET request URLs.</h1>';
+		for (var i = 0; i < links.length; i++) {
+			html += `<li><a href="${links[i]}" target="_blank">${links[i]}</a></li>`;
+		}
+		html += `</html>`;
 
-	server.get('/', function(req,res,next){
-		res.send('Browse to http://localhost:7070/api/v1/fx/timesten?val=45');
+		res.writeHead(200, {
+			'Content-Type': 'text/html'
+		});
+		res.end(html);
 	});
-
 
 	// ****************************************************************************
 	// Handle 404 errors when a route is undefined.
@@ -46,24 +57,24 @@ transom.initialize(myApi).then(function(server){
 	});
 
 	// ****************************************************************************
-	// Handle uncaught exceptions within your code.
-	// ****************************************************************************
-	process.on('uncaughtException', function (err) {
-		console.error('Really bad Error!', err);
-	});
-
-	// ****************************************************************************
-	// Handle uncaught rejections within your code.
-	// ****************************************************************************
-	process.on('unhandledRejection', function (err) {
-		console.error('unhandledRejection', err);
-	});
-
-	// ****************************************************************************
 	// Start the Transom server...
 	// ****************************************************************************
 	server.listen(7070, function () {
 		console.log('%s listening at %s', server.name, server.url);
-		console.log('browse to http://localhost:7070/api/v1/fx/timesten?val=45');
+		console.log(`Browse to ${server.url}`);
 	});
+});
+
+// ****************************************************************************
+// Handle uncaught exceptions within your code.
+// ****************************************************************************
+process.on('uncaughtException', function (err) {
+	console.error('Really bad Error!', err);
+});
+
+// ****************************************************************************
+// Handle uncaught rejections within your code.
+// ****************************************************************************
+process.on('unhandledRejection', function (err) {
+	console.error('unhandledRejection', err);
 });

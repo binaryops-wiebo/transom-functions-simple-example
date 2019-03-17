@@ -10,15 +10,17 @@ Use `npm start` to run the api server. The API will start on the localhost, on p
 
 ### Details
 The function definition is in `myApi.js`. You'll note that it uses a GET request, and the function gets a reference of the TransomJS
-server passed in. Of course it also gets the `request`, `response` and `next` function, as you would in any Restify server.
+server passed in. Of course it also gets the `request`, `response` and `next` functions, as you would in any Restify server.
 ``` javascript
 timesten: {
   methods: ["GET"],
-  function: function (server, req, res, next) {
-    if (req.params["val"]) {
-      const v = Number.parseFloat(req.params["val"]);
-      res.send(v + " times ten is " + (v * 10));
+  function: function(server, req, res, next) {
+    let result = 'val parameter is required.';
+    if (req.params['val']) {
+      const v = Number.parseFloat(req.params['val']);
+      result = `${v} times ten is ${v * 10}`;
     }
+    res.send(result);
     next();
   }
 }

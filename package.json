@@ -13,10 +13,11 @@
   "author": "Wiebo Troost",
   "license": "MIT",
   "dependencies": {
-    "@transomjs/transom-core": "^1.0.6",
-    "@transomjs/transom-server-functions": "^1.0.5"
+    "@transomjs/transom-core": "^1.2.1",
+    "@transomjs/transom-server-functions": "^1.0.8",
+    "opn": "^5.5.0"
   },
   "devDependencies": {
-    "cross-env": "^5.1.3"
+    "cross-env": "^5.2.0"
   }
 }

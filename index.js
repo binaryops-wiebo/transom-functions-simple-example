@@ -1,7 +1,8 @@
 'use strict';
 
-const Transom = require('@transomjs/transom-core');
+const opn = require('opn');
 const transomServerFunctions = require('@transomjs/transom-server-functions');
+const Transom = require('@transomjs/transom-core');
 
 const transom = new Transom();
 
@@ -17,6 +18,7 @@ transom.configure(transomServerFunctions);
 // Initialize my TransomJS API metadata.
 transom.initialize(myApi).then(function (server) {
 
+	// Render a simple Welcome page with some valid URL examples
 	server.get('/', function (req, res, next) {
 		const links = [
 			'/api/v1/fx/timesten?val=123',
@@ -39,7 +41,7 @@ transom.initialize(myApi).then(function (server) {
 	// ****************************************************************************
 	// Handle 404 errors when a route is undefined.
 	// ****************************************************************************
-	server.get('.*', function (req, res, next) {
+	server.get('/.*', function (req, res, next) {
 		var err = new Error(req.url + " does not exist");
 		err.status = 404;
 		next(err);
@@ -61,7 +63,7 @@ transom.initialize(myApi).then(function (server) {
 	// ****************************************************************************
 	server.listen(7070, function () {
 		console.log('%s listening at %s', server.name, server.url);
-		console.log(`Browse to ${server.url}`);
+		opn(server.url);
 	});
 });
 
